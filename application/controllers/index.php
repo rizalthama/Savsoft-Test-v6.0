@@ -12,7 +12,7 @@ class index extends CI_Controller {
 	public function index()
 	{	
 	// title of page
-		$data['title']='Question Bank';
+		$data['title']='Home Page';
 	// load header file
 		$this->load->view('header',$data);
 	// load index file
