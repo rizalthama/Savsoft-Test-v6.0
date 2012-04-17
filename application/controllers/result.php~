@@ -1,0 +1,45 @@
+<?php
+class result extends CI_Controller {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('result_model');
+		$this->load->helper('html');
+		$this->load->helper('url');
+		
+	}
+	public function index($limit = 0)
+	{	
+		$data['result'] = $this->result_model->get_result('0',$limit);
+		$data['title']='Result';
+		$data['limit']=$limit;
+		$this->load->view('header',$data);
+		$this->load->view('result',$data);
+		$this->load->view('footer');
+	}
+	public function search($str)
+	{	
+		$data['result'] = $this->result_model->search_result($str);
+		$data['title']='Result';
+		$this->load->view('header',$data);
+		$this->load->view('result',$data);
+		$this->load->view('footer');
+	}
+	
+	public function del($tid)
+	{
+		$this->result_model->del_result($tid);
+		$this->index();
+	}
+	
+	public function view($tid)
+	{	
+		$data['result'] = $this->result_model->get_result($tid,'0');
+		$data['title']='Result';
+		$this->load->view('header',$data);
+		$this->load->view('result',$data);
+		$this->load->view('footer');
+	}
+	
+}
+?>

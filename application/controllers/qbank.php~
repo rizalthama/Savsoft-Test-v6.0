@@ -1,0 +1,131 @@
+<?php
+class qbank extends CI_Controller {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('qbank_model');
+		$this->load->model('subject_model');
+		$this->load->helper('html');
+		$this->load->helper('url');
+		$this->load->library('javascript');
+	}
+	public function index($limit = 0)
+	{	
+		$data['questionBank'] = $this->qbank_model->get_question('0',$limit);
+		$data['title']='Question Bank';
+		$data['limit']=$limit;
+		$this->load->view('header',$data);
+		$this->load->view('qbank',$data);
+		$this->load->view('footer');
+	}
+	public function search($str)
+	{	
+		$data['questionBank'] = $this->qbank_model->search_question($str);
+		$data['title']='Question Bank';
+		$this->load->view('header',$data);
+		$this->load->view('qbank',$data);
+		$this->load->view('footer');
+	}
+	
+	public function del($qid)
+	{
+		$this->qbank_model->del_question($qid);
+		$data['questionBank'] = $this->qbank_model->get_question();
+		$data['title']='Question Bank';
+		$this->load->view('header',$data);
+		$this->load->view('qbank',$data);
+		$this->load->view('footer');
+	}
+	
+	public function view($qid)
+	{	
+		$data['questionBank'] = $this->qbank_model->get_question($qid,'');
+		$data['title']='Question';
+		$this->load->view('header',$data);
+		$this->load->view('question',$data);
+		$this->load->view('footer');
+	}
+	public function edit($qid)
+	{  $this->load->library('form_validation');
+		$data['questionBank'] = $this->qbank_model->get_question($qid,'');
+		$data['subjectName'] = $this->subject_model->get_subject();
+		$data['title']='Edit Question';
+		$this->load->view('header',$data);
+		$this->load->view('editquestion',$data);
+		$this->load->view('footer');
+	}
+	
+	public function newq()
+	{ 	$this->load->library('form_validation');
+		$data['subjectName'] = $this->subject_model->get_subject();
+		$data['title']='Add New Question';
+		$this->load->view('header',$data);
+		$this->load->view('newquestion',$data);
+		$this->load->view('footer');
+	}
+	
+	public function update($qid)
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('question', 'question', 'required');
+		//$this->form_validation->set_rules('option[]', 'option', 'required');
+		$this->form_validation->set_rules('answer', 'answer', 'required');
+		if ($this->form_validation->run() == FALSE)
+		{
+		$data['questionBank'] = $this->qbank_model->get_question($qid);
+		$data['subjectName'] = $this->subject_model->get_subject();
+		$data['title']='Question';
+		$this->load->view('header',$data);
+		$this->load->view('editquestion',$data);
+		$this->load->view('footer');
+		}
+		else
+		{
+		
+		$this->qbank_model->update_question($qid);
+		$data['questionBank'] = $this->qbank_model->get_question($qid);
+		$data['title']='Question';
+		$this->load->view('header',$data);
+		$this->load->view('question',$data);
+		$this->load->view('footer');
+		}
+	
+	
+	}
+	
+	
+	
+	
+	
+	public function add()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('question', 'question', 'required');
+		//$this->form_validation->set_rules('option[]', 'option', 'required');
+		$this->form_validation->set_rules('answer', 'answer', 'required');
+		if ($this->form_validation->run() == FALSE)
+		{
+		$data['subjectName'] = $this->subject_model->get_subject();
+		$data['title']='Question';
+		$this->load->view('header',$data);
+		$this->load->view('newquestion',$data);
+		$this->load->view('footer');
+		}
+		else
+		{
+		
+		$this->qbank_model->add_question();
+		$data['questionBank'] = $this->qbank_model->get_question();
+		$data['title']='Question Bank';
+		$this->load->view('header',$data);
+		$this->load->view('qbank',$data);
+		$this->load->view('footer');
+		}
+	
+	
+	}
+	
+}
+?>

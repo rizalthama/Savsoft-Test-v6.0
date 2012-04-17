@@ -1,0 +1,129 @@
+<?php
+class member extends CI_Controller {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('member_model');
+		$this->load->model('group_model');
+		$this->load->helper('html');
+		$this->load->helper('url');
+		$this->load->library('javascript');
+	}
+	public function index($limit = 0)
+	{	
+		$data['member'] = $this->member_model->get_member('0',$limit);
+		$data['title']='Member';
+		$data['limit']=$limit;
+		$this->load->view('header',$data);
+		$this->load->view('member',$data);
+		$this->load->view('footer');
+	}
+	public function search($str)
+	{	
+		$data['member'] = $this->member_model->search_member($str);
+		$data['title']='Member';
+		$this->load->view('header',$data);
+		$this->load->view('member',$data);
+		$this->load->view('footer');
+	}
+	
+	public function del($uid)
+	{
+		$this->del_model->del_member($uid);
+		$this->index($limit = 0);
+	}
+	
+	public function view($uid)
+	{	
+		$data['member'] = $this->member_model->get_member($uid,'');
+		$data['title']='Member';
+		$this->load->view('header',$data);
+		$this->load->view('viewmember',$data);
+		$this->load->view('footer');
+	}
+	public function edit($uid)
+	{  $this->load->library('form_validation');
+		$data['member'] = $this->member_model->get_member($uid,'');
+		$data['groupName'] = $this->group_model->get_group();
+		$data['title']='Edit Member';
+		$this->load->view('header',$data);
+		$this->load->view('editmember',$data);
+		$this->load->view('footer');
+	}
+	
+	public function newm()
+	{ 	$this->load->library('form_validation');
+		$data['groupName'] = $this->group_model->get_group();
+		$data['title']='Add New Member';
+		$this->load->view('header',$data);
+		$this->load->view('newmember',$data);
+		$this->load->view('footer');
+	}
+	
+	public function update($uid)
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('first_name', 'First Name', 'required');
+		$this->form_validation->set_rules('last_name', 'Last Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('country', 'Country', 'required');
+		if ($this->form_validation->run() == FALSE)
+		{
+		$data['member'] = $this->member_model->get_member($uid,'');
+		$data['groupName'] = $this->group_model->get_group();
+		$data['title']='Edit Member';
+		$this->load->view('header',$data);
+		$this->load->view('editmember',$data);
+		$this->load->view('footer');
+		}
+		else
+		{
+		
+		$this->member_model->update_member($uid);
+		$data['member'] = $this->member_model->get_member($uid,'');
+		$data['title']='Member';
+		$this->load->view('header',$data);
+		$this->load->view('viewmember',$data);
+		$this->load->view('footer');
+		}
+	
+	
+	}
+	
+	
+	
+	
+	
+	public function add()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('first_name', 'First Name', 'required');
+		$this->form_validation->set_rules('last_name', 'Last Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('country', 'Country', 'required');
+		if ($this->form_validation->run() == FALSE)
+		{
+		$data['groupName'] = $this->group_model->get_group();
+		$data['title']='Member';
+		$this->load->view('header',$data);
+		$this->load->view('newmember',$data);
+		$this->load->view('footer');
+		}
+		else
+		{
+		
+		$this->member_model->add_member();
+		$data['member'] = $this->member_model->get_member('0','0');
+		$data['title']='Member';
+		$this->load->view('header',$data);
+		$this->load->view('member',$data);
+		$this->load->view('footer');
+		}
+	
+	
+	}
+	
+}
+?>

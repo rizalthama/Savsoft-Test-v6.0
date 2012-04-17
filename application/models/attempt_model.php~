@@ -1,0 +1,72 @@
+<?php
+class attempt_model extends CI_Model {
+
+	public function __construct()
+	{	
+		$this->load->database();
+	}
+	
+	
+	public function get_questions($test)
+	{	
+	$noqs=explode(',',$test['random_question_no']);
+	$sids=explode(',',$test['subject_ids']);
+		
+		foreach($noqs as $key => $noq){
+		$sid=$sids[$key];
+		if($key==0){
+		$sql="(select * from questionBank where sid='$sid' order by rand() LIMIT $noq )";
+		}else{
+		$sql=$sql."UNION (select * from questionBank where sid='$sid' order by rand() LIMIT $noq )";
+		}
+		}
+		$query = $this->db->query($sql);
+		$questions=$query->result_array();
+		
+		return $questions;
+		
+		
+	}
+	
+	
+	public function submit_test($tid)
+	{
+	$correct_answer=0;
+	$marks=array();
+	// getting required percentage from test table 
+	$sql="select reqpercentage from test where tid='$tid' ";
+	$query1 = $this->db->query($sql);
+	$test=$query1->row_array();
+	// getting correct answer from questionbank table
+	$question_ids=implode(",",$_POST['question_ids']);
+	$sql="select answer from questionBank where qid in ($question_ids) ORDER BY FIELD(qid,$question_ids) ";
+	$query = $this->db->query($sql);
+	$answer=$query->result_array();
+	$convans=array();
+	foreach($answer as $key => $answer2)
+	{
+	foreach($answer2 as $answer3){ $convans[$key]=$answer3; }
+	}
+	$ans=implode(",",$_POST['ans']);
+	$postedans=explode(",",$ans);
+	foreach($postedans as $key => $postedans)
+	{
+	
+	if($postedans==$convans[$key]){ $correct_answer+=1; $marks[]=1; }else{ $marks[]=0; }
+	}
+	$obtained_percentage=($correct_answer/$_POST['totq'])*100;
+	
+	if($obtained_percentage>=$test['reqpercentage']){ $status="1"; }else{ $status="0"; }
+	$mark=implode(",",$marks);
+	// insert data
+$data=array('tid'=>$tid,'total_question'=>$_POST['totq'],'selected_answers'=>$ans,'question_ids'=>$question_ids,'correct_answer'=>$correct_answer,'obtained_percentage'=>$obtained_percentage,'status'=>$status);
+	$this->db->insert('result', $data); 
+		
+		
+		
+	}
+	
+}
+
+
+?>

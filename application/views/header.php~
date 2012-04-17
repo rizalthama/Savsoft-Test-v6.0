@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title><?=$title?></title>
+<link rel="stylesheet" href="http://localhost/CodeIgniter/style.css" type="text/css">
+<script type="text/javascript" src="<?php echo base_url('/javascript/javascript.js'); ?>" ></script>
+<script type="text/javascript" src="<?php echo base_url('/javascript/calendar/calendarDateInput.js'); ?>"></script>
+</head>
+</head>
+<body>
+
+<div id="body">
+
+<table><tr>
+<td><div id="menu">
+<?php echo anchor('index/','Home',array('id'=>'menu'));?> 
+</div></td>
+<td><div id="menu">
+<?php echo anchor('member/','Member',array('id'=>'menu'));?>
+</div></td>
+<td><div id="menu">
+<?php echo anchor('qbank/','Question Bank',array('id'=>'menu'));?>
+</div></td>
+<td><div id="menu">
+<?php echo anchor('test/','Test',array('id'=>'menu'));?>
+</div></td>
+<td><div id="menu">
+<?php echo anchor('result/','Result',array('id'=>'menu'));?> 
+</div></td>
+</tr></table>
+
+
+</div>
+
+
+</div>
+

@@ -1,0 +1,12 @@
+<?php
+header("Content-type: image/jpeg");
+$data = array('3400','2570','245','473','1000','3456','780');
+
+$im = imagecreate('700','350'); // width , height px
+
+	$red = imagecolorallocate($im,255,0,0);   
+	imagerectangled($im, 10, 10, 230, 230, $red);
+        
+
+imagejpeg($im);
+?>

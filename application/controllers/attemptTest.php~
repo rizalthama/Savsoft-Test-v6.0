@@ -1,0 +1,30 @@
+<?php
+class attemptTest extends CI_Controller {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('test_model');
+		$this->load->model('attempt_model');
+		$this->load->helper('html');
+		$this->load->helper('url');
+		
+	}
+	public function index($tid)
+	{	$this->load->library('form_validation');
+		$data['test'] = $this->test_model->get_test($tid,'0');
+		$data['question'] = $this->attempt_model->get_questions($data['test']);
+		$this->load->view('header_attemptTest.php',$data);
+		$this->load->view('attemptTest',$data);
+		$this->load->view('footer');
+	}
+	
+	public function submit($tid)
+	{	
+		$data['resultid']=$this->attempt_model->submit_test();
+		$data['title']="Test Submitted";
+		$this->load->view('header.php',$data);
+		$this->load->view('submitTest',$data);
+		$this->load->view('footer');
+	}
+}
+?>

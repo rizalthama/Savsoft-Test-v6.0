@@ -1,0 +1,58 @@
+
+
+<div id="container">
+	<h1>
+	Test Started...
+	</h1>
+<?php echo form_open('attemptTest/submit/'.$test['tid']);?>
+	
+	<div id="body">
+	<?php
+	$totq=0;
+	foreach($question as $countTotq){ $totq+=1; }
+	 $qno=1;
+	foreach($question as $question){
+	?>
+	<input type="hidden" name="question_ids[]" value="<?=$question['qid']?>" >
+	<input type="hidden" name="timeTaken[]" id="timeTaken<?=$qno?>" value="">
+	<div id="singleq<?=$qno?>" >
+	<code><table><tr><td>Q<?=$qno?>) &nbsp;</td><td><?=$question['question']?></td></tr></table></code>
+	<?php $option=explode(',',$question['options']); 
+	foreach($option as $option){ 
+	$ans="ans".$qno;
+	?>
+	
+	<div id="qoption">
+	<table><tr><td style="width:18px;" valign=top ><input type="radio" value="<?=$option?>" name="ans[<?=$qno?>]" >  </td><td><?=$option?></td></tr></table>
+	
+	 </div>
+	<?php 
+	} 
+	$qno+=1;
+	?>
+	<br/>
+	
+	
+	
+	<table><tr><td><?php if($qno>"2"){ ?><div id="button" style="width:70px;"><center><a href="javascript:backq(<?=$qno-2?>);" id="menu" >Back</a></center></div><?php } ?></td><td> &nbsp;&nbsp;</td><td>
+	<?php if($qno<=$totq){ ?><div id="button" style="width:70px;"><center><a href="javascript:nextq(<?=$qno?>);" id="menu">Next</a></center></div> <?php } ?>
+	</td><td> &nbsp;&nbsp;</td>
+	<td>
+	<div id="button" style="width:120px;"><center><a href="javascript:submitTest(<?=$qno?>);" id="menu">Submit Test</a></center></div>
+	</td></tr></table>
+	<br/>
+	</div>
+	<?php
+	} 
+	?>
+	 <div id="submitTest"> 
+	 	 Do you really want to submit test ?<br/><br/>
+	 <a href="javascript:backq(<?=$qno-1?>);" >Cancel</a>&nbsp;&nbsp;
+	 <input type="submit" value="Yes, Submit Now">
+	 <br/><br/>
+	 </div>
+	 
+	<input type="hidden" id="totq" name="totq" value="<?=$totq?>">
+	</div>
+
+

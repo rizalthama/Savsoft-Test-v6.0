@@ -1,0 +1,35 @@
+
+
+<div id="container">
+	<h1>Result #<?=$result['result_id']?> 
+	<div style="float:right" >
+	<?php echo anchor('result/',img('images/back.gif'));?> &nbsp;
+	<a href="javascript:print();"><?php echo img('images/print.png');?></a>
+	</div>
+	</h1>
+
+	<div id="body">
+
+	
+	<code>
+	
+	<table >
+	<tr ><td>Test Name</td><td width="20px"></td><td><?=$result['test_name']?></td></tr>
+	<tr><td>Correct Answers / Total Questions</td><td width="20px"></td><td><?php $correct=explode(",",$result['correct_answer']); echo ?> / <?=$result['total_question']?></td></tr>
+	<tr><td valign=top >Obtained Percentage </td><td width="20px"></td><td><?=$result['obtained_percentage']?> % </td></tr>
+	<tr><td>Time Taken / Time Duration </td><td width="20px"></td><td><?// =$result['country']?></td></tr>
+	<tr><td>Status</td><td width="20px"></td><td><?php if($result['status']=="1"){ echo "Pass";} else{ echo "Fail";} ?></td></tr>
+	</table>
+	
+	</code>
+	
+		 
+	<img src="http://localhost/CodeIgniter/images/result_bar_graph.php">
+
+	 
+	 <br/>	
+	</div>
+
+	
+</div>
+

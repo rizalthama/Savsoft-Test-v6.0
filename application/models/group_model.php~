@@ -1,0 +1,30 @@
+<?php
+class group_model extends CI_Model {
+
+	public function __construct()
+	{	
+		$this->load->database();
+	}
+	
+	public function get_subject($slug = FALSE)
+	{
+	if ($slug === FALSE)
+		{
+		$this->db->select('*');
+		$this->db->from('subject');
+		//$this->db->join('subject', 'questionBank.sid = subject.sid');
+		$query = $this->db->get();
+		return $query->result_array();
+		}
+	
+		$this->db->select('*');
+		$this->db->from('subject');
+		//$this->db->join('subject', 'questionBank.sid = subject.sid and qid = '.$slug );
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+	
+}
+
+
+?>

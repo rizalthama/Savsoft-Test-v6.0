@@ -1,0 +1,48 @@
+<?php
+class result_model extends CI_Model {
+
+	public function __construct()
+	{	
+		$this->load->database();
+	}
+	public function del_result($result_id)
+	{
+	$this->db->delete('result', array('result_id' => $result_id));
+	}
+	public function search_result($result_id)
+	{
+		$this->db->select('*');
+		$this->db->from('result');
+		$this->db->join('test', 'result.tid = test.tid' );
+		$this->db->or_like('result.result_id',$str);
+		$this->db->or_like('result.tid',$str);
+		$this->db->or_like('test.test_name',$str);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+	
+	
+	public function get_result($result_id, $limit)
+	{
+	if ($result_id>="1")
+		{
+		$this->db->select('*');
+		$this->db->from('result');
+		$this->db->join('test', 'result.tid = test.tid and result_id = '.$result_id );
+		$query = $this->db->get();
+		return $query->row_array();
+		}
+	else{
+		$this->db->select('*');
+		$this->db->from('result');
+		$this->db->join('test', 'result.tid = test.tid order by result_id DESC LIMIT '.$limit.', 30 ');
+		$query = $this->db->get();
+		return $query->result_array();
+		
+		}
+	}
+	
+}
+
+
+?>

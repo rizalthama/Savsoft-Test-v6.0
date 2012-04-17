@@ -1,0 +1,44 @@
+
+
+
+<div id="container">
+	<?php echo form_open('qbank/update/'.$questionBank['qid']);?>
+	
+	<h1>Edit Question  #<?=$questionBank['qid']?> (Subject: <select name="sid"><?php foreach($subjectName as $subject){ ?><option value="<?=$subject['sid']?>" <?php if($questionBank['sid']==$subject['sid']){ echo "selected";}?> ><?=$subject['subject_Name']?></option> <?php } ?></select>)
+	
+	<div style="float:right" >
+	<?php echo anchor('qbank/',img('images/back.gif'));?> &nbsp;
+	<?php echo anchor('qbank/view/'.$questionBank['qid'],img('images/view.png'));?>
+	</div>
+	
+	</h1>
+
+	<div id="body">
+	
+	<?php echo validation_errors(); ?>
+	
+	<code><textarea rows="3" cols="90" name="question" ><?=$questionBank['question']?></textarea></code>
+	<?php $option=explode(',',$questionBank['options']); $i=1;
+	foreach($option as $option){ ?>
+	<table><tr><td style="width:18px;"><input type="radio" name="answer" <?php if($questionBank['answer']==$option){ 
+	 echo 'checked';
+	 }?> value="<?=$i?>" ></td><td><input type="text" name="option[]" value="<?=$option?>" ></td></tr></table>
+	<?php $i+=1; } ?><input type="hidden" id=nop value="<?=$i?>">
+	 
+	 <table id="newOption"><tr><td></td><td></td></tr></table>
+	 
+	 
+	 <table>
+	 <tr><td style="width:18px;"></td><td><a href="javascript:addfield();">Add new option</a><br/></td></tr>
+	 <tr><td style="width:18px;"></td><td><input type="submit" name="submit" value="Submit"></td></tr>
+	 </table>
+	 
+	 
+	 <br/><br/>
+	 
+	</form>
+	</div>
+
+	
+</div>
+

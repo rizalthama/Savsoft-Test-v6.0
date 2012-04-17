@@ -1,0 +1,42 @@
+
+
+<div id="container">
+	<h1>Question Bank 
+	<div style="float:right;"><?php echo anchor('qbank/newq/','Add New');?></div>
+	</h1>
+	<div id="body">
+	<input type="text" id="searchq" value="" onkeydown="if(event.keyCode==13){return searchQuestion();}"> <a href="javascript:searchQuestion();"><?php echo img(array('src'=>'images/search.jpg','width'=>'20','height'=>'20','title'=>'Search'));?></a>
+	<table>
+	<tr id="Theading" >
+	<th id="Theading"> ID </th>
+	<th id="Theading"> Question </th>
+	<th id="Theading"> Subject </th>
+	<th id="Theading"> View </th>
+	<th id="Theading"> Edit </th>
+	<th id="Theading"> Delete </th>
+	</tr>
+	<?php foreach($questionBank as $question){ ?>
+	<tr id="Tvalues">
+	<td ><?=$question['qid']?></td>
+	<td ><?php echo substr($question['question'],0,60); if(strlen($question['question'])>='61'){ echo "...";} ?></td>
+	<td ><?=$question['subject_Name']?></td>
+	<td ><?php echo anchor('qbank/view/'.$question['qid'],img(array('src'=>'images/view.png','title'=>'View')));?></td>
+	<td ><?php echo anchor('qbank/edit/'.$question['qid'],img('images/edit.png'))?></td>
+	<td ><a href="javascript:delq('<?php echo $question['qid']?>');"><?php echo img('images/delete.png')?></a></td>
+	</tr>
+	<?php } ?>
+	</table>
+	<?php if(isset($limit)){
+	if(count($questionBank)<=0){ echo "No Question Found!<br/>";}
+	 
+	$next=($limit+30); $back=($limit-30); 
+	if($back<0){ $back=0;}
+		echo anchor('qbank/index/'.$back,'Back');?> | <?php echo anchor('qbank/index/'.$next,'Next'); } ?>
+	<br/><br/>
+	
+	
+	</div>
+
+	
+</div>
+

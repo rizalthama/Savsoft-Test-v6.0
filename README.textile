@@ -1,0 +1,70 @@
+SAVSOFT TEST V6.0
+
+OVERVIEW
+Savsoft Test v6.0 is an Open Source PHP based application which enable you to conduct online test and quiz on your website or server.
+
+----------------------------------------------------------------------------
+
+DESCRIPTION
+Savsoft Test v6.0 is devloped in CodeIgniter which is baed on MVC pattern.
+This application enable you to create and manage online test or quiz on your website or server. 
+You can create test of multiple choice questions by including many parameters like Test Start and End Time, Assigning to different groups, Time duration, Paid or Free Test etc.
+Paid test can be created through credit option available in user module. you can manually add credit to every user which is require for paid test. in future, we will integrate different payment gate ways like paypa IPN, credit card etc.
+Result view is integrated with Google chart API (Optional).
+for more deatil of features you can visit our website http://www.savsofteproducts.com/ 
+
+-----------------------------------------------------------------------------
+
+INSTALLATION
+
+1) First of all you have to download latest version of CodeIgniter (visit http://codeigniter.com/ ).
+2) Extract and upload to our server.
+3) Download all files of Savsoft Test v6.0 
+4) To create the MySQL table run sql file (savsoftTest.sql) found in main directory.
+5) Download and place all other folders (application, images, javascript) in your root folder of codeigniter.
+	For example if your domain is wwww.example.com and you uploaded codeigniter folder at location www.example.com/CodeIgniter/ then upload all folder at location www.example.com/CodeIgniter/ so that it look like following structure.
+	www.example.com/CodeIgniter/application  (By default there is already one application folder in codeigniter. replace it)
+	www.example.com/CodeIgniter/images
+	www.example.com/CodeIgniter/javascript
+6) Open file /application/config/database.php 
+7) config with your database name, hostname, user, password and save it.
+8) open file /application/config/config.php here you can fill basic information and save it.
+	
+	
+9) (OPTIONAL) 
+	if you want Rich Text Editor to add question then our code is ready to integrate with TinyMCE editor (tested with version TinyMCE 3.4.9)
+	you can download TinyMCE editor from http://www.tinymce.com/download/download.php or http://www.tinymce.com/
+	extract it. open location /tinymce/jscripts/ . here you get "tiny_mce" folder copy it and place it in location www.example.com/CodeIgniter/javascript/ 
+	so that it look like this url www.example.com/CodeIgniter/javascript/tiny_mce/
+	
+Now its insatelled!
+
+
+You can login with following default administrator email and password.
+
+Email:  admin@example.com
+Password:  demo
+
+After login with this email and passwod you can change it.
+
+You can also change it before run sql file. (OPTIONAL)
+To do this open savsoftTest.sql file go to LINE 123 replace admin@example.com and other information with your.
+
+
+IF YOU STILL HAVE ANY INSTALLATION PROBLEM THEN CONTACT US FOR INSTALLATION SERVICE AVAILABLE AT http://savsofteproducts.com/
+
+------------------------------------------------------------------------------------
+
+COPYRIGHT
+
+Savsoft Test v6.0  is copyright © 2012 Savsoft Technologies LLP, www.savsofteproducts.com
+
+-------------------------------------------------------------------------------------
+
+LICENSE
+
+To read license information visit http://savsofteproducts.com/license.php
+
+--------------------------------------------------------------------------------------
+
+

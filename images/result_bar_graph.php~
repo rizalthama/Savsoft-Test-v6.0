@@ -1,0 +1,26 @@
+<?php
+header("Content-type: image/png");
+$marks = array('1','0','0','1','1','N','1');
+$height="500";
+$width="900";
+$gap="5"; // width of block
+
+$im = imagecreate($width,$height); // width , height px
+
+$white = imagecolorallocate($im,255,255,255);   
+$black = imagecolorallocate($im,0,0,0);   
+$line = imagecolorallocate($im,0,0,0);   
+$bgline = imagecolorallocate($im,220,220,220);   
+$red = imagecolorallocate($im,250,0,0);   
+$green = imagecolorallocate($im,34,139,34);   
+$text = imagecolorallocate($im,139,137,137);   
+
+imageline($im, 50, 05, 50, ($height-100), $bgline); // vertical left bar
+imageline($im, 50, ($height-100), ($width-50), 150, $bgline); // bottom horizontal bar
+$x2=50;
+$y2=100;
+$qno=1;
+
+
+imagejpeg($im);
+?>

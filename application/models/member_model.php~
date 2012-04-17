@@ -1,0 +1,72 @@
+<?php
+class member_model extends CI_Model {
+
+	public function __construct()
+	{	
+		$this->load->database();
+	}
+	public function del_member($uid)
+	{
+	$this->db->delete('user', array('uid' => $uid)); 
+	}
+	public function search_member($str)
+	{
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('user_group', 'user.gid = user_group.gid' );
+		$this->db->or_like('user.uid',$str);
+		$this->db->or_like('user.email',$str);
+		$this->db->or_like('user.first_name',$str);
+		$this->db->or_like('user.last_name',$str);
+		$this->db->or_like('user.country',$str);
+		$this->db->or_like('user_group.group_name',$str);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+	
+	
+	public function get_member($slug, $limit)
+	{
+	if ($slug>="1")
+		{
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('user_group', 'user.gid = user_group.gid and uid = '.$slug );
+		$query = $this->db->get();
+		return $query->row_array();
+		}
+	else{
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('user_group', 'user.gid = user_group.gid order by uid DESC LIMIT '.$limit.', 30 ');
+		$query = $this->db->get();
+		return $query->result_array();
+		
+		}
+	}
+	public function update_member($uid)
+	{
+	$data=array('email'=>$_POST['email'],'first_name'=>$_POST['first_name'],'last_name'=>$_POST['last_name'],'contact_no'=>$_POST['contact_no'],'address'=>$_POST['address'],'country'=>$_POST['country'],'gid'=>$_POST['gid'],'status'=>$_POST['status'],'credit'=>$_POST['credit']);
+	$this->db->where('uid', $uid);
+	$this->db->update('user', $data); 
+	
+	if($_POST['password']!=""){
+	$pass=md5($_POST['password']);
+	$data=array('password'=>$pass);
+	$this->db->where('uid', $uid);
+	$this->db->update('user', $data); 
+	}
+	
+	}
+	
+public function add_member()
+	{
+	$pass=md5($_POST['password']);
+	$data=array('email'=>$_POST['email'],'password'=>$pass,'first_name'=>$_POST['first_name'],'last_name'=>$_POST['last_name'],'contact_no'=>$_POST['contact_no'],'address'=>$_POST['address'],'country'=>$_POST['country'],'gid'=>$_POST['gid'],'status'=>$_POST['status'],'credit'=>$_POST['credit']);
+	$this->db->insert('user', $data); 
+	}
+	
+}
+
+
+?>
