@@ -21,7 +21,7 @@
 	
 	
 	<table>
-	<tr><td>Subject Name</td><td width="20px"></td><td><input type="text" name="group_name" value="<?php echo $group['group_name'];?>" ></td></tr>
+	<tr><td>Group Name</td><td width="20px"></td><td><input type="text" name="group_name" value="<?php echo $group['group_name'];?>" ></td></tr>
 	</table>
 	
 	<input type="submit" value="Submit">
