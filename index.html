@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Savsoft Test v6.0 by savsoft-technologies</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Savsoft Test v6.0</h1>
+        <p>Savsoft Test an OpenSource online test and quiz management web application</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/savsoft-technologies/Savsoft-Test-v6.0" class="button fork"><strong>Fork On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/savsoft-technologies/Savsoft-Test-v6.0/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/savsoft-technologies/Savsoft-Test-v6.0/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <p><strong>SAVSOFT TEST V6.0</strong></p>
+
+<p><strong>OVERVIEW</strong></p>
+
+<p>Savsoft Test v6.0 is an Open Source PHP based application which enable you to conduct online test and quiz on your website or server.</p>
+
+<hr><p><strong>DESCRIPTION</strong></p>
+
+<p>Savsoft Test v6.0 is devloped in CodeIgniter which is baed on MVC pattern.
+This application enable you to create and manage online test or quiz on your website or server. 
+You can create test of multiple choice questions by including many parameters like Test Start and End Time, Assigning to different groups, Time duration, Paid or Free Test etc.
+Paid test can be created through credit option available in user module. you can manually add credit to every user which is require for paid test. in future, we will integrate different payment gate ways like paypa IPN, credit card etc.
+Result view is integrated with Google chart API (Optional).
+for more deatil of features you can visit our website <a href="http://www.savsofteproducts.com/">http://www.savsofteproducts.com/</a> </p>
+
+<hr><p><strong>DEMO</strong></p>
+
+<p>Online Demo available at <a href="http://test.savsofteproducts.com/demo/">http://test.savsofteproducts.com/demo/</a></p>
+
+<hr><p><strong>INSTALLATION</strong></p>
+
+<p>1) First of all you have to download latest version of CodeIgniter (visit <a href="http://codeigniter.com/">http://codeigniter.com/</a> ).</p>
+
+<p>2) Extract and upload to our server.</p>
+
+<p>3) Download all files of Savsoft Test v6.0 </p>
+
+<p>4) To create the MySQL table run sql file (savsoftTest.sql) found in main directory.</p>
+
+<p>5) Download and place all other folders (application, images, javascript) in your root folder of codeigniter.</p>
+
+<p>For example if your domain is wwww.example.com and you uploaded codeigniter folder at location <a href="http://www.example.com/CodeIgniter/">www.example.com/CodeIgniter/</a> then upload all folder at location <a href="http://www.example.com/CodeIgniter/">www.example.com/CodeIgniter/</a> so that it look like following structure.</p>
+
+<p><a href="http://www.example.com/CodeIgniter/application">www.example.com/CodeIgniter/application</a>  (By default there is already one application folder in codeigniter. replace it)</p>
+
+<p><a href="http://www.example.com/CodeIgniter/images">www.example.com/CodeIgniter/images</a></p>
+
+<p><a href="http://www.example.com/CodeIgniter/javascript">www.example.com/CodeIgniter/javascript</a></p>
+
+<p>6) Open file /application/config/database.php </p>
+
+<p>7) config with your database name, hostname, user, password and save it.</p>
+
+<p>8) open file /application/config/config.php here you can fill basic information and save it.</p>
+
+<p>9) (OPTIONAL) 
+if you want Rich Text Editor to add question then our code is ready to integrate with TinyMCE editor (tested with version TinyMCE 3.4.9)</p>
+
+<p>you can download TinyMCE editor from <a href="http://www.tinymce.com/download/download.php">http://www.tinymce.com/download/download.php</a> or <a href="http://www.tinymce.com/">http://www.tinymce.com/</a></p>
+
+<p>extract it. open location /tinymce/jscripts/ . here you get "tiny_mce" folder copy it and place it in location <a href="http://www.example.com/CodeIgniter/javascript/">www.example.com/CodeIgniter/javascript/</a> </p>
+
+<p>so that it look like this url <a href="http://www.example.com/CodeIgniter/javascript/tiny_mce/">www.example.com/CodeIgniter/javascript/tiny_mce/</a></p>
+
+<p>Now its insatelled!</p>
+
+<p>You can login with following default administrator email and password.</p>
+
+<p>Email:  <a href="mailto:admin@example.com">admin@example.com</a></p>
+
+<p>Password:  demo</p>
+
+<p>After login with this email and passwod you can change it.</p>
+
+<p>You can also change it before run sql file. (OPTIONAL)</p>
+
+<p>To do this open savsoftTest.sql file go to LINE 123 replace <a href="mailto:admin@example.com">admin@example.com</a> and other information with your.</p>
+
+<p>If you still have any installation problem then contact us for installation service available at <a href="http://savsofteproducts.com/">http://savsofteproducts.com/</a></p>
+
+<hr><p><strong>COPYRIGHT</strong></p>
+
+<p>Savsoft Test v6.0  is copyright © 2012 Savsoft Technologies LLP, <a href="http://www.savsofteproducts.com">www.savsofteproducts.com</a></p>
+
+<hr><p><strong>LICENSE</strong></p>
+
+<p>Savsoft Test by Savsoft Technologies LLP is licensed under a Creative Commons Attribution 3.0 Unported License </p>
+
+<p>To read full license information visit <a href="http://savsofteproducts.com/license.php">http://savsofteproducts.com/license.php</a></p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/savsoft-technologies">savsoft-technologies</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-31024513-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
