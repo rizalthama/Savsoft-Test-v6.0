@@ -18,10 +18,10 @@ for more deatil of features you can visit our website http://www.savsofteproduct
 INSTALLATION
 
 1) First of all you have to download latest version of CodeIgniter (visit http://codeigniter.com/ ).
-2) Extract and upload to our server.
+2) Extract and upload to your server.
 3) Download all files of Savsoft Test v6.0 
 4) To create the MySQL table run sql file (savsoftTest.sql) found in main directory.
-5) Download and place all other folders (application, images, javascript) in your root folder of codeigniter.
+5) Place all other folders (application, images, javascript) in your root folder of codeigniter.
 	For example if your domain is wwww.example.com and you uploaded codeigniter folder at location www.example.com/CodeIgniter/ then upload all folder at location www.example.com/CodeIgniter/ so that it look like following structure.
 	www.example.com/CodeIgniter/application  (By default there is already one application folder in codeigniter. replace it)
 	www.example.com/CodeIgniter/images
@@ -63,7 +63,9 @@ Savsoft Test v6.0  is copyright © 2012 Savsoft Technologies LLP, www.savsoftepr
 
 LICENSE
 
-To read license information visit http://savsofteproducts.com/license.php
+Savsoft Test by Savsoft Technologies LLP is licensed under a Creative Commons Attribution 3.0 Unported License
+
+To read full license information visit http://savsofteproducts.com/license.php
 
 --------------------------------------------------------------------------------------
 
