@@ -43,7 +43,7 @@ function delt(tid){
 }
 
 /* confirm delete result */
-function delt(result_id){
+function delr(result_id){
 	if(confirm("Do you really want to delete result?"))
 	{
 	window.location=baseurl+"result/del/"+result_id;

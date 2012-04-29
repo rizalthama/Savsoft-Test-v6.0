@@ -70,7 +70,7 @@ class test_model extends CI_Model {
 	$random_question_no=implode(",",$noq);
 	$sid=array_filter($_POST['sid']);
 	$subject_ids=implode(",",$sid);
-	$data=array('test_name'=>$_POST['test_name'],'description'=>$_POST['description'],'test_time'=>$_POST['test_time'],'start_time'=>$start_time,'end_time'=>$end_time,'group_id'=>$group_id,'type'=>$_POST['type'],'amount'=>$_POST['amount'],'answer_view'=>$_POST['answer_view'],'attempts'=>$_POST['attempts'],'random_question_no'=>$random_question_no,'subject_ids'=>$subject_ids);
+	$data=array('test_name'=>$_POST['test_name'],'description'=>$_POST['description'],'test_time'=>$_POST['test_time'],'start_time'=>$start_time,'end_time'=>$end_time,'reqpercentage'=>$_POST['reqpercentage'],'group_id'=>$group_id,'type'=>$_POST['type'],'amount'=>$_POST['amount'],'answer_view'=>$_POST['answer_view'],'attempts'=>$_POST['attempts'],'random_question_no'=>$random_question_no,'subject_ids'=>$subject_ids);
 	$this->db->where('tid', $tid);
 	$this->db->update('test', $data); 
 		
@@ -85,7 +85,7 @@ public function add_test()
 	$random_question_no=implode(",",$noq);
 	$sid=array_filter($_POST['sid']);
 	$subject_ids=implode(",",$sid);
-	$data=array('test_name'=>$_POST['test_name'],'description'=>$_POST['description'],'test_time'=>$_POST['test_time'],'start_time'=>$start_time,'end_time'=>$end_time,'group_id'=>$group_id,'type'=>$_POST['type'],'amount'=>$_POST['amount'],'answer_view'=>$_POST['answer_view'],'attempts'=>$_POST['attempts'],'random_question_no'=>$random_question_no,'subject_ids'=>$subject_ids);
+	$data=array('test_name'=>$_POST['test_name'],'description'=>$_POST['description'],'test_time'=>$_POST['test_time'],'start_time'=>$start_time,'end_time'=>$end_time,'reqpercentage'=>$_POST['reqpercentage'],'group_id'=>$group_id,'type'=>$_POST['type'],'amount'=>$_POST['amount'],'answer_view'=>$_POST['answer_view'],'attempts'=>$_POST['attempts'],'random_question_no'=>$random_question_no,'subject_ids'=>$subject_ids);
 	$this->db->insert('test', $data); 
 	return $this->db->insert_id();
 	}

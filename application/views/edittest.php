@@ -71,6 +71,14 @@ document.getElementById(noq).innerHTML=strs;
 	
 	<?php //echo date('d-M-Y h:i A',$test['end_time']);?>
 	</td></tr>
+	
+	
+	<tr><td>Percentage required to pass </td><td width="20px"></td><td>
+<select  name="reqpercentage" ><?php for($i=1; $i<=100; $i++){ ?><option value="<?=$i?>" <?php if($test['reqpercentage']==$i){ echo "selected";}?> ><?=$i?></option><?php } ?></select>
+%
+</td></tr>
+	
+	
 	<tr><td valign=top >Assigned to Groups</td><td width="20px"></td><td>
 	<?php
 	$groupids=explode(',',$test['group_id']); $br=1;

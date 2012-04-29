@@ -27,7 +27,7 @@
 	<td > <?php if($result['status']==1){ echo "Pass"; }else{ echo "Fail";}  ?> </td>
 	<td ><center><?php echo anchor('result/view/'.$result['result_id'],img(array('src'=>'images/view.png','title'=>'View')));?> </center></td>
 	<?php if(($this->session->userdata('su'))=='1'){ ?>
-	<td ><center><a href="javascript:delt('<?php echo $result['result_id']?>');"><?php echo img('images/delete.png');?></a></center></td>
+	<td ><center><a href="javascript:delr('<?php echo $result['result_id']?>');"><?php echo img('images/delete.png');?></a></center></td>
 	<?php } ?>
 	</tr>
 	<?php } ?>

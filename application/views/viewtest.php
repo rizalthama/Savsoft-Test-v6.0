@@ -24,6 +24,9 @@
 	<tr><td>Time Duration</td><td width="20px"></td><td><?=$test['test_time']?> Minutes </td></tr>
 	<tr><td>Start Time</td><td width="20px"></td><td><?php echo date('d-M-Y h:i A',$test['start_time']);?></td></tr>
 	<tr><td>End Time</td><td width="20px"></td><td><?php echo date('d-M-Y h:i A',$test['end_time']);?></td></tr>
+	<tr><td>Percentage required to pass</td><td width="20px"></td><td><?php echo $test['reqpercentage'];?>%</td></tr>
+	
+	
 	<tr><td>Test Type</td><td width="20px"></td><td><?php if($test['type']=="1"){ echo "Paid ( Amount: ".$test['amount']." )"; }else{ echo "Free"; } ?></td></tr>
 	<?php if(($this->session->userdata('su'))=='1'){ ?>
 	<tr><td valign=top >Assigned to Groups</td><td width="20px"></td><td>

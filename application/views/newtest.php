@@ -70,6 +70,14 @@ document.getElementById('noq').innerHTML=strs;
 	
 	<?php //echo date('d-M-Y h:i A',$test['end_time']);?>
 	</td></tr>
+	
+	
+<tr><td>Percentage required to pass </td><td width="20px"></td><td>
+<select  name="reqpercentage" ><?php for($i=1; $i<=100; $i++){ ?><option value="<?=$i?>"   ><?=$i?></option><?php } ?></select>
+%
+</td></tr>
+	
+	
 	<tr><td valign=top >Assigned to Groups</td><td width="20px"></td><td>
 	<?php
 	$br=1;
@@ -85,6 +93,9 @@ document.getElementById('noq').innerHTML=strs;
 	<input type="radio" name="type" value="0"  > Free  &nbsp;&nbsp; 
 	<input type="radio" name="type" value="1" > Paid  &nbsp; ( Amount <input type="text" name="amount" value="" style="width:60px" > )
 	</td></tr>
+
+	
+
 	<tr><td>Allow to view Answer</td><td width="20px"></td><td>
 	<input type="radio" name="answer_view" value="1"  > Yes &nbsp;&nbsp; <input type="radio" name="answer_view" value="0"  > No
 	
