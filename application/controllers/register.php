@@ -68,7 +68,7 @@ class register extends CI_Controller {
 		}
 		
 		if($this->config->item('registration')=="yes"){
-		if($this->config->item('email_confirm')!="yes"){
+		if($this->config->item('email_confirm')=="yes"){
 	// if admin require email confirmation then send password to email
 		$email_subject="Account login information";
 		$email_msg="Dear [last_name],\n\n";
